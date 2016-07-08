@@ -17,7 +17,9 @@ namespace TestOut
 
             Author a1 = new Author("John", "White");
             Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15));
-            
+
+            Publisher<Author> pub = new Publisher<Author>();
+            Subscribe<Store> sub = new Subscribe<Store>(pub);
 
             //a1.AddNewBook(new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15)), evnt);
 
