@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventsWork\EventArguments.cs" />
+    <Compile Include="EventsWork\IPublisher.cs" />
     <Compile Include="EventsWork\NewBookFromAuthorEvent.cs" />
+    <Compile Include="EventsWork\Publisher.cs" />
     <Compile Include="Linq.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />

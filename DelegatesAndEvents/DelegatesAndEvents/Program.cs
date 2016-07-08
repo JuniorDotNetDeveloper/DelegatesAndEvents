@@ -13,13 +13,13 @@ namespace TestOut
         static void Main(string[] args)
         {
             NewBookFromAuthorEvent evnt = new NewBookFromAuthorEvent();
+            Store amazone = new Store(evnt);
 
             Author a1 = new Author("John", "White");
             Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15));
+            
 
-            Store amazone = new Store(evnt);
-
-            a1.AddNewBook(b1, evnt);
+            //a1.AddNewBook(new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15)), evnt);
 
 
             Console.ReadLine();
