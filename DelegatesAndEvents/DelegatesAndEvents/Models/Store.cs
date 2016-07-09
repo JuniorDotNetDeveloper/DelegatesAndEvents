@@ -22,7 +22,14 @@ namespace DelegatesAndEvents.Models
             e.DataPublisher += ExtendStoreLists;
         }
 
-        
+        public Store(IPublisher<Author> e)
+        {
+            BooksInStore = new List<Book>();
+            AuthorsInStore = new List<Author>();
+            e.DataPublisher += ExtendStoreLists;
+        }
+
+
         public void ExtendStoreLists(object sender, EventArguments<Book> newBook)
         {
             BooksInStore.Add(newBook._Object);

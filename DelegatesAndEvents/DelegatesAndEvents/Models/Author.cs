@@ -19,10 +19,10 @@ namespace DelegatesAndEvents.Models
             PersonalBooks = new List<Book>();
         }
 
-        public void AddNewBook(Book book, NewBookFromAuthorEvent MyEvent)
+        public void AddNewBook(Book book, Publisher<Book> MyEvent)
         {
             PersonalBooks.Add(book);
-            MyEvent.DoOnNewBook(book);
+            MyEvent.PublishData(book);
         }
     }
 }
