@@ -9,8 +9,8 @@ namespace DelegatesAndEvents.Models
 {
     internal class Store
     {
-        //public IPublisher<Book> BookPublisher { get; set; }
-        //public IPublisher<Author> AuthorPublisher { get; set; }
+        public IPublisher<Book> BookPublisher { get; set; }
+        public IPublisher<Author> AuthorPublisher { get; set; }
 
         public IList<Book> BooksInStore { get; set; }
         public IList<Author> AuthorsInStore { get; set; }

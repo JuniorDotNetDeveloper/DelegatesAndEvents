@@ -22,7 +22,6 @@ namespace TestOut
 
             Subscribe<Author> authorSubscriber = new Subscribe<Author>(authorPublisher);
             Subscribe<Book> bookSubscriber = new Subscribe<Book>(pubBook);
-
             bookSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
             authorSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
 
