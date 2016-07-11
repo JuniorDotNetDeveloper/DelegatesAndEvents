@@ -15,19 +15,25 @@ namespace DelegatesAndEvents.Models
         public IList<Book> BooksInStore { get; set; }
         public IList<Author> AuthorsInStore { get; set; }
 
-        public Store(IPublisher<Book> e)
-        {
-            BooksInStore = new List<Book>();
-            AuthorsInStore = new List<Author>();
-            e.DataPublisher += ExtendStoreLists;
-        }
 
-        public Store(IPublisher<Author> e)
+        public Store()
         {
             BooksInStore = new List<Book>();
             AuthorsInStore = new List<Author>();
-            e.DataPublisher += ExtendStoreLists;
         }
+        //public Store(IPublisher<Book> e)
+        //{
+        //    BooksInStore = new List<Book>();
+        //    AuthorsInStore = new List<Author>();
+        //    e.DataPublisher += ExtendStoreLists;
+        //}
+
+        //public Store(IPublisher<Author> e)
+        //{
+        //    BooksInStore = new List<Book>();
+        //    AuthorsInStore = new List<Author>();
+        //    e.DataPublisher += ExtendStoreLists;
+        //}
 
 
         public void ExtendStoreLists(object sender, EventArguments<Book> newBook)
