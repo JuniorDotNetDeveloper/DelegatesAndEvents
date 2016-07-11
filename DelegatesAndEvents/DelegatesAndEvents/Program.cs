@@ -13,15 +13,22 @@ namespace TestOut
         static void Main(string[] args)
         {
 
-            Publisher<Book> pubBook = new Publisher<Book>();
-            Store store = new Store(pubBook);
+            //Publisher<Book> pubBook = new Publisher<Book>();
+            //Store store = new Store(pubBook);
 
-            Author a1 = new Author("John", "White");
-            Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15));
-            a1.AddNewBook(b1, pubBook);
+            //Author a1 = new Author("John", "White");
+            //Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15));
+            //a1.AddNewBook(b1, pubBook);
 
-
-
+            IEnumerable<char> query = "Not what you might expect";
+            string vowels = "aeiou";
+            for (int i = 0; i < vowels.Length; i++)
+            {
+                char vowel = vowels[i];
+                query = query.Where(c => c != vowel);
+            }
+            foreach (char c in query) Console.Write(c);
+        
             //NewBookFromAuthorEvent evnt = new NewBookFromAuthorEvent();
             //Store amazone = new Store(evnt);
 
