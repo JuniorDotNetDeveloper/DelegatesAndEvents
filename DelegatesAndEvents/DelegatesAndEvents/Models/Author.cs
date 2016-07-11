@@ -24,5 +24,10 @@ namespace DelegatesAndEvents.Models
             PersonalBooks.Add(book);
             MyEvent.PublishData(book);
         }
+
+        public override string ToString()
+        {
+            return string.Format($"First name: {FirstName}, Last name: {LastName}");
+        }
     }
 }
