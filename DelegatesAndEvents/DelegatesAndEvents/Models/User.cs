@@ -12,5 +12,6 @@ namespace DelegatesAndEvents.Models
         public string LastName { get; set; }
         public IList<Book> CurrentBooks { get; set; }
 
+
     }
 }
