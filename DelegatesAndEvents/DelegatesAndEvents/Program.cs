@@ -29,12 +29,13 @@ namespace TestOut
                 new Author("Alexandr", "Ostrovskii"),
                 new Author("Mihail", "Saltikov-Shedrin"),
                 new Author("Nikolai", "Leskov"),
-                new Author("Gleb", "Uspenskii")
+                new Author("Gleb", "Uspenskii"),
+                new Author("NoBook", "Author")
             };
 
             List<Book> bookList = new List<Book>()
             {
-                new Book(authorList.Where(a => a.LastName == "Pushkin").First(), "Evgenii Onegin", (1833)),
+                new Book(authorList.First(a => a.LastName == "Pushkin"), "Evgenii Onegin", 1833),
                 new Book(authorList.Where(a => a.LastName == "Pushkin").First(), "Ruslan i Liudmila", (1820)),
                 new Book(authorList.Where(a => a.LastName == "Pushkin").First(), "Poltava", (1829)),
 
@@ -139,9 +140,9 @@ namespace TestOut
             }
 
             //var joining = bookList.SelectMany(books => books.Authors, (books, authrs) => new { Books = books, Authrs = authrs })
-            //    .Join(bookList, outerKeySelector => outerKeySelector.Books.Name, innerKeySelector => innerKeySelector.Name,
-            //        (outerKeySelector, innerKeySelector) => new { Auth = outerKeySelector.Authrs, Bookss = innerKeySelector.Name })
-            //    .GroupBy(x=>x.Auth);
+            //    //.Join(bookList, outerKeySelector => outerKeySelector.Books.Name, innerKeySelector => innerKeySelector.Name,
+            //    //    (outerKeySelector, innerKeySelector) => new { Auth = outerKeySelector.Authrs, Bookss = innerKeySelector.Name })
+            //    .GroupBy(x => x.Authrs);
 
 
             //foreach (var item in joining)
@@ -187,11 +188,11 @@ namespace TestOut
                     Console.Write($"\t{i2.Name} || ");
                 }
             }
-
             Console.WriteLine("\n");
 
 
             Console.WriteLine("\n\n---------------------> Grouping (second attempt) <--------------------\n");
+
             var y = bookList
                 .SelectMany(book => book.Authors, (book, author) => new { book, author })
                 .GroupBy(pair => pair.author.LastName + " " + pair.author.FirstName, pair => pair.book.Name);
@@ -208,7 +209,7 @@ namespace TestOut
             }
 
 
-            //var authorGroup = bookList.GroupBy(a=>a.Authors.Select(author => author.LastName));
+            //var authorGroup = bookList.GroupBy(a => a.Authors.Select(author => author.LastName));
             //foreach (var item in authorGroup)
             //{
             //    foreach (var i in item.Key)
@@ -226,6 +227,11 @@ namespace TestOut
 
 
             #endregion
+
+
+            var noBookAuthor = authorList.Except(bookList.SelectMany(a => a.Authors));
+            var nba = authorList.Where(a => !bookList.Any(b => b.Authors.Contains(a)));
+
             Console.ReadLine();
         }
     }
