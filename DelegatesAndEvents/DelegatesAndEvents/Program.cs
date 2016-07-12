@@ -115,7 +115,7 @@ namespace TestOut
                 .GroupBy(bound => bound.author.FirstName + " " + bound.author.LastName);
             foreach (var item in lermontovBooks)
             {
-                Console.WriteLine($"Author: {item.Key}\n");
+                Console.WriteLine($" Author: {item.Key} \n");
                 foreach (var item2 in item)
                 {
                     Console.WriteLine("\t" + item2.book.Name);
@@ -128,21 +128,32 @@ namespace TestOut
 
             Console.WriteLine("\n\n-----------------> Joining <----------------");
 
-            //var authors = bookList.SelectMany(a => a.Authors).Distinct();
-
             var joining = bookList.SelectMany(books => books.Authors, (books, authrs) => new { Books = books, Authrs = authrs })
                 .Join(bookList, outerKeySelector => outerKeySelector.Books.Name, innerKeySelector => innerKeySelector.Name,
                     (outerKeySelector, innerKeySelector) => new { Auth = outerKeySelector.Authrs, Bookss = innerKeySelector.Name });
 
 
-           
-            //var joining = bookList.Join(authors, books => books.Authors.Select(s => s.LastName), a => a.LastName,
-            //    (books, a) => new { AuthorName = a.LastName, BookName = books.Name });
-
             foreach (var item in joining)
             {
                 Console.WriteLine($"Author: {item.Auth}\t Books: {item.Bookss} ");
             }
+
+            //var joining = bookList.SelectMany(books => books.Authors, (books, authrs) => new { Books = books, Authrs = authrs })
+            //    .Join(bookList, outerKeySelector => outerKeySelector.Books.Name, innerKeySelector => innerKeySelector.Name,
+            //        (outerKeySelector, innerKeySelector) => new { Auth = outerKeySelector.Authrs, Bookss = innerKeySelector.Name })
+            //    .GroupBy(x=>x.Auth);
+
+
+            //foreach (var item in joining)
+            //{
+            //    Console.WriteLine($"Author: {item.Key}\t\nBooks:");
+            //    foreach (var i2 in item)
+            //    {
+            //        Console.WriteLine($"\t{i2.Bookss}");
+            //    }
+            //}
+
+
             Console.WriteLine("\n");
 
             #endregion
