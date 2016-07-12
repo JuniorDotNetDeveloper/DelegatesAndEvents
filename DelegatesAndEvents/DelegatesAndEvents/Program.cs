@@ -97,31 +97,123 @@ namespace TestOut
             #endregion
 
             #region Filtering
-
-            var after1900Year = bookList.Where(b => b.PublicationYear > 1900).Select(b=>b.PublicationYear);
+            Console.WriteLine("-----------------> Filtering <----------------\n");
+            var after1900Year = bookList.Where(b => b.PublicationYear > 1900).Select(b=>b.Name);
+            Console.WriteLine("Books which was publikated after year 1900 \n");
             foreach (var item in after1900Year)
-            {
-                Console.WriteLine(item);
-            }
-            
-            //var dostoevskii = bookList.Where(a => a.Authors.Where(a2 => a2.FirstName == "Fedor" && a2.LastName == "Dostoevskii") == a);
-            var d = from book in bookList
-                    select new { author = book.Authors.Distinct().First(), books = book.Name }
-                    into g
-                    group g.books by g.author;
-                    //select new { BookName = g.ToList() };
+                Console.WriteLine($"\t{item}");
 
-            foreach (var item in d)
+            #endregion
+
+            #region Projection
+
+            Console.WriteLine("\n\n-----------------> Projection <----------------");
+            //var lermontovBooksV2_0 = from au in bookList
+
+
+            var lermontovBooks = bookList.SelectMany(a => a.Authors.Where(au => au.LastName == "Lermontov"), (a, au) => new { book = a, author = au })
+                .GroupBy(bound => bound.author.FirstName + " " + bound.author.LastName);
+            foreach (var item in lermontovBooks)
             {
+                Console.WriteLine($"Author: {item.Key}\n");
                 foreach (var item2 in item)
                 {
-                    Console.WriteLine(item2);
+                    Console.WriteLine("\t" + item2.book.Name);
                 }
-                Console.WriteLine(item);
-                //Console.WriteLine(item.author);
-                //Console.WriteLine(item.books);
-                   
             }
+
+            #endregion
+
+            #region Joining
+
+            Console.WriteLine("\n\n-----------------> Joining <----------------");
+
+            //var authors = bookList.SelectMany(a => a.Authors).Distinct();
+
+            var joining = bookList.SelectMany(books => books.Authors, (books, authrs) => new { Books = books, Authrs = authrs })
+                .Join(bookList, outerKeySelector => outerKeySelector.Books.Name, innerKeySelector => innerKeySelector.Name,
+                    (outerKeySelector, innerKeySelector) => new { Auth = outerKeySelector.Authrs, Bookss = innerKeySelector.Name });
+
+
+           
+            //var joining = bookList.Join(authors, books => books.Authors.Select(s => s.LastName), a => a.LastName,
+            //    (books, a) => new { AuthorName = a.LastName, BookName = books.Name });
+
+            foreach (var item in joining)
+            {
+                Console.WriteLine($"Author: {item.Auth}\t Books: {item.Bookss} ");
+            }
+            Console.WriteLine("\n");
+
+            #endregion
+
+            #region Ordering
+
+            Console.WriteLine("\n\n-----------------> Ordering <----------------");
+            Book bookObj1 = new Book(authorList.Where(a => a.LastName == "Pushkin").First(), "Evgenii Onegin", (1833));
+            Book bookObj2 = new Book(authorList.Where(a => a.LastName == "Pushkin").First(), "Ruslan i Liudmila", (1820));
+
+            var ordering = bookList.OrderBy(b => b.PublicationYear);
+            foreach (var item in ordering)
+            {
+                Console.WriteLine($"Publication: {item.PublicationYear}\t BookName: {item.Name}\t ");
+            }
+
+            #endregion
+
+            #region Grouping
+
+            Console.WriteLine("\n\n---------------------> Grouping <--------------------\n");
+
+            var order = bookList.OrderBy(b => b.Name);
+
+            var grouping = order.GroupBy(a => a.PublicationYear);
+            foreach (var item in grouping)
+            {
+                Console.Write($"\n{item.Key}");
+                foreach (var i2 in item)
+                {
+                    Console.Write($"\t{i2.Name} || ");
+                }
+            }
+
+            Console.WriteLine("\n");
+
+
+            Console.WriteLine("\n\n---------------------> Grouping (second attempt) <--------------------\n");
+            var y = bookList
+                .SelectMany(book => book.Authors, (book, author) => new { book, author })
+                .GroupBy(pair => pair.author.LastName + " " + pair.author.FirstName, pair => pair.book.Name);
+
+            foreach (var item in y)
+            {
+                Console.WriteLine($"Author: {item.Key}\n");
+                var t = item.ToList();
+                foreach (var item2 in item)
+                {
+                    Console.WriteLine($"\t{item2}");
+                }
+                Console.WriteLine();
+            }
+
+
+            //var authorGroup = bookList.GroupBy(a=>a.Authors.Select(author => author.LastName));
+            //foreach (var item in authorGroup)
+            //{
+            //    foreach (var i in item.Key)
+            //    {
+
+            //        Console.WriteLine(i);
+            //        foreach (var item2 in item)
+            //        {
+
+            //            Console.WriteLine(item2.Name);
+            //        }
+            //    }
+            //    Console.WriteLine();
+            //}
+
+
             #endregion
             Console.ReadLine();
         }

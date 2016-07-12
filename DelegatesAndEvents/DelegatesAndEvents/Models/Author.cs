@@ -8,7 +8,7 @@ namespace DelegatesAndEvents.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public IList<Book> PersonalBooks { get; private set; }
+        public IList<Book> PersonalBooks { get;  set; }
 
 
         //private NewBookFromAuthorEvent MyEvent = new NewBookFromAuthorEvent();
