@@ -36,9 +36,8 @@ namespace DelegatesAndEvents.Models
 
         private void WriteInFile(Book obj)
         {
-            Stream fs = new FileStream("test.txt", FileMode.Append);
-            using (fs)
-            using (TextWriter tx = new StreamWriter(fs))
+           
+            using (TextWriter tx = new StreamWriter("test.txt", true))
             {
                 var author = obj.Authors.First();
 
