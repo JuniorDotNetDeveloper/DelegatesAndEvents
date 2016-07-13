@@ -6,9 +6,9 @@ namespace DelegatesAndEvents.Models
 {
     internal class Author : IdentifyClass
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public IList<Book> PersonalBooks { get; private set; }
+        public string FirstName { get; }
+        public string LastName { get; }
+        public IList<Book> PersonalBooks { get;  } = new List<Book>();
 
 
         //private NewBookFromAuthorEvent MyEvent = new NewBookFromAuthorEvent();
@@ -16,7 +16,6 @@ namespace DelegatesAndEvents.Models
         {
             FirstName = firstName;
             LastName = lastName;
-            PersonalBooks = new List<Book>();
         }
 
         public void AddNewBook(Book book, Publisher<Book> MyEvent)

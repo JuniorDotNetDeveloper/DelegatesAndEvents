@@ -11,18 +11,8 @@ namespace DelegatesAndEvents.Models
     internal class Store
     {
         
-
-        public IList<Book> BooksInStore { get; set; }
-        public IList<Author> AuthorsInStore { get; set; }
-
-
-        public Store()
-        {
-            BooksInStore = new List<Book>();
-            AuthorsInStore = new List<Author>();
-        }
-        
-
+        public IList<Book> BooksInStore { get;  } = new List<Book>();
+        public IList<Author> AuthorsInStore { get; } = new List<Author>();
 
         public void ExtendStoreLists(object sender, EventArguments<Book> newBook)
         {
