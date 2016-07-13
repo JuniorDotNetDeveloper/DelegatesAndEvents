@@ -1,6 +1,7 @@
 ﻿using DelegatesAndEvents.EventsWork;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,7 @@ namespace DelegatesAndEvents.Models
 {
     internal class Store
     {
-        //public IPublisher<Book> BookPublisher { get; set; }
-        //public IPublisher<Author> AuthorPublisher { get; set; }
+        
 
         public IList<Book> BooksInStore { get; set; }
         public IList<Author> AuthorsInStore { get; set; }
@@ -21,24 +21,13 @@ namespace DelegatesAndEvents.Models
             BooksInStore = new List<Book>();
             AuthorsInStore = new List<Author>();
         }
-        //public Store(IPublisher<Book> e)
-        //{
-        //    BooksInStore = new List<Book>();
-        //    AuthorsInStore = new List<Author>();
-        //    e.DataPublisher += ExtendStoreLists;
-        //}
-
-        //public Store(IPublisher<Author> e)
-        //{
-        //    BooksInStore = new List<Book>();
-        //    AuthorsInStore = new List<Author>();
-        //    e.DataPublisher += ExtendStoreLists;
-        //}
+        
 
 
         public void ExtendStoreLists(object sender, EventArguments<Book> newBook)
         {
             BooksInStore.Add(newBook._Object);
+            WriteInFile(newBook._Object);
             Console.WriteLine("New book added");
         }
 
@@ -46,6 +35,21 @@ namespace DelegatesAndEvents.Models
         {
             AuthorsInStore.Add(newAuthor._Object);
             Console.WriteLine("new author added");
+        }
+
+        private void WriteInFile(Book obj)
+        {
+
+            using (TextWriter tx = new StreamWriter("test.txt", true))
+            {
+                var author = obj.Authors.First();
+
+                tx.WriteLine($"Was added new book: {DateTime.Now.Date}");
+                tx.WriteLine($"\tAuthor: {author.FirstName} {author.LastName}");
+                tx.WriteLine($"\tBook: {obj.Name}");
+                tx.WriteLine($"\tDescription: {obj.Description}");
+                tx.WriteLine($"\tPublication Year: {obj.PublicationDate.Year}");
+            }
         }
     }
 }
