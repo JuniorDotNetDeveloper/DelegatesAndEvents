@@ -8,10 +8,14 @@ namespace DelegatesAndEvents.Models
 {
     internal class User : IdentifyClass
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FirstName { get; }
+        public string LastName { get; }
         public IList<Book> CurrentBooks { get; set; }
 
-
+        public User(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }

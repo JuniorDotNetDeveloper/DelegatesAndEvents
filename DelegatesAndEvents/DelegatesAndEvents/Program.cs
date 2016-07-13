@@ -34,7 +34,6 @@ namespace TestOut
 
             Console.WriteLine(b1);
 
-
             Console.ReadLine();
         }
     }

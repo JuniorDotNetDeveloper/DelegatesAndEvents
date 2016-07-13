@@ -32,7 +32,7 @@ namespace DelegatesAndEvents.Models
             StringBuilder authors = new StringBuilder();
             foreach (var author in Authors) authors.Append(author + ", ");
 
-            return string.Format($"\nBook name: {Name}\nPublication year: {PublicationDate.Year}\nAuthors: {authors}\nDescription: {Description}\nHow Old: {HowOldIs()}");
+            return $"\nBook name: {Name}\nPublication year: {PublicationDate.Year}\nAuthors: {authors}\nDescription: {Description}\nHow Old: {HowOldIs()}";
         }
     }
 }
