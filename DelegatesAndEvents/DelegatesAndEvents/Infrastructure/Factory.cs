@@ -11,8 +11,9 @@ namespace DelegatesAndEvents.Factory
         private static readonly Lazy<SingltoneFactory> lazyInstance = new Lazy<SingltoneFactory>(() => new SingltoneFactory(), true);
         public static SingltoneFactory Instance { get { return lazyInstance.Value; } }
 
-
         //Private Constructor 
         private SingltoneFactory() { }
+
+        
     }
 }

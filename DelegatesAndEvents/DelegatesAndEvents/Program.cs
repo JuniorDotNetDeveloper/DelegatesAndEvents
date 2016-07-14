@@ -15,11 +15,11 @@ namespace TestOut
 
             Publisher<Book> pubBook = new Publisher<Book>();
             Publisher<Author> authorPublisher = new Publisher<Author>();
-
             User testUser = new User("Vladimir", "Pozner");
+
             Store store = new Store();
             Author a1 = new Author("John", "White");
-            Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15), description: "sdf") { Description = "This book is good for beginers"};
+            Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15), description: "sdf") { Description = "This book is good for beginers" };
 
             Order testOrder = new Order(testUser, b1);
 
