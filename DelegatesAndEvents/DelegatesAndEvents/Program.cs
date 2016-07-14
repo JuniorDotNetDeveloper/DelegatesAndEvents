@@ -13,12 +13,25 @@ namespace TestOut
     {
         static void Main(string[] args)
         {
-            NewBookFromAuthorEvent evnt = new NewBookFromAuthorEvent();
 
+            Publisher<Book> pubBook = new Publisher<Book>();
+            Publisher<Author> authorPublisher = new Publisher<Author>();
+
+            User testUser = new User("Vladimir", "Pozner");
+            Store store = new Store();
             Author a1 = new Author("John", "White");
-            Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15));
+            Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15), description: "sdf") { Description = "This book is good for beginers"};
 
-            Store amazone = new Store(evnt);
+            Order testOrder = new Order(testUser, b1);
+
+
+            //Subscribe<Author> authorSubscriber = new Subscribe<Author>(authorPublisher);
+            //Subscribe<Book> bookSubscriber = new Subscribe<Book>(pubBook);
+
+            //store.BooksInStore.Add(new Book(a1, "new book", new DateTime(2002, 12, 12)));
+
+            //bookSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
+            //authorSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
 
             //a1.AddNewBook(b1, evnt);
             string text = amazone.ReadFromFile("test.txt");
@@ -28,7 +41,11 @@ namespace TestOut
             Console.WriteLine(text.EndsWith("2012"));
 
 
+            ////a1.AddNewBook(b1, pubBook);
+            //pubBook.PublishData(b1);
+            //authorPublisher.PublishData(a1);
 
+            //Console.WriteLine(b1);
 
             Console.ReadLine();
         }
