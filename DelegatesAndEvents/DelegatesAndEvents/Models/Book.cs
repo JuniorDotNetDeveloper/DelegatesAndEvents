@@ -14,7 +14,7 @@ namespace DelegatesAndEvents.Models
         public BookStatus Status { get; set; }
         public IList<Author> Authors { get; } = new List<Author>();
 
-        public int HowOldIs () => DateTime.Now.Year - PublicationDate.Year; 
+        public int HowOldIs => DateTime.Now.Year - PublicationDate.Year; 
 
         public Book(Author author, string bookName, DateTime publicationDate, string description = "")
         {
@@ -32,7 +32,7 @@ namespace DelegatesAndEvents.Models
             StringBuilder authors = new StringBuilder();
             foreach (var author in Authors) authors.Append(author + ", ");
 
-            return $"\nBook name: {Name}\nPublication year: {PublicationDate.Year}\nAuthors: {authors}\nDescription: {Description}\nHow Old: {HowOldIs()}";
+            return $"\nBook name: {Name}\nPublication year: {PublicationDate.Year}\nAuthors: {authors}\nDescription: {Description}\nHow Old: {HowOldIs}";
         }
     }
 }
