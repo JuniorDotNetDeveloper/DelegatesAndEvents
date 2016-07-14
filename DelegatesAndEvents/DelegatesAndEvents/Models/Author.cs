@@ -22,6 +22,7 @@ namespace DelegatesAndEvents.Models
 
         public void AddNewBook(Book book, Publisher<Book> MyEvent)
         {
+            if (book == null) throw new ArgumentNullException($"{nameof(book)} is null");
             PersonalBooks.Add(book);
             MyEvent.PublishData(book);
         }
