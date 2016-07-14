@@ -37,7 +37,7 @@ namespace DelegatesAndEvents.Models
         private void WriteInFile(Book obj)
         {
            
-            using (TextWriter tx = new StreamWriter("test.txt", true))
+            using (TextWriter tx = new StreamWriter("test.txt", true, Encoding.UTF8))
             {
                 var author = obj.Authors.First();
 
@@ -49,5 +49,21 @@ namespace DelegatesAndEvents.Models
             }
         }
 
+        public string ReadFromFile(string pathOfFile)
+        {
+            StringBuilder currentLine = new StringBuilder();
+            DirectoryInfo DirectoryInfo = new DirectoryInfo(@"E:\Projects\DelegatesAndEvents\DelegatesAndEvents\DelegatesAndEvents\bin\Debug");
+            FileInfo[] fileInfo = DirectoryInfo.GetFiles("*.txt");
+            var path = fileInfo.FirstOrDefault(f=>f.Name==pathOfFile).Name;
+
+            if (path != string.Empty)
+            {
+                using (TextReader textReader = new StreamReader(path, Encoding.UTF8))
+                {
+                    currentLine.Append(textReader.ReadToEnd());
+                }
+            }
+            return currentLine.ToString();
+        }
     }
 }

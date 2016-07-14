@@ -18,6 +18,7 @@ namespace DelegatesAndEvents.Models
             Authors = new List<Author>();
             Authors.Add(author);
 
+            
             Name = bookName;
             PublicationDate = publicationDate;
             Status = BookStatus.Free;

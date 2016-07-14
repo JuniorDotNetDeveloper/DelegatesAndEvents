@@ -20,10 +20,16 @@ namespace TestOut
 
             Store amazone = new Store(evnt);
 
-            a1.AddNewBook(b1, evnt);
+            //a1.AddNewBook(b1, evnt);
+            string text = amazone.ReadFromFile("test.txt");
+
+            Console.WriteLine(text.Contains("C# for Dumms"));
+            Console.WriteLine(text.StartsWith("Was added new book"));
+            Console.WriteLine(text.EndsWith("2012"));
 
 
-            
+
+
             Console.ReadLine();
         }
 
