@@ -11,19 +11,21 @@ namespace DelegatesAndEvents.Models
         public string Name { get; }
         public DateTime PublicationDate{ get; }
         public string Description { get; set; }
-        public BookStatus Status { get; set; }
+        public BookStatus Status { get; set; } = BookStatus.Free;
         public IList<Author> Authors { get; } = new List<Author>();
 
         public int HowOldIs => DateTime.Now.Year - PublicationDate.Year; 
 
         public Book(Author author, string bookName, DateTime publicationDate, string description = "")
         {
-            Authors.Add(author);
+            if (author == null)  throw new ArgumentNullException($"{nameof(author)} is requared");
+            if (string.IsNullOrEmpty(bookName)) throw new ArgumentNullException($"Next field named: {nameof(bookName)} is null or empty");
+            if (publicationDate == null) throw new ArgumentNullException($"{nameof(publicationDate)} is requared");
 
+            Authors.Add(author);
             Name = bookName;
             PublicationDate = publicationDate;
-            Description = description;
-            Status = BookStatus.Free;
+            Description = description?.ToString() ?? "Without description";
         }
 
 

@@ -14,6 +14,8 @@ namespace DelegatesAndEvents.Models
         //private NewBookFromAuthorEvent MyEvent = new NewBookFromAuthorEvent();
         public Author(string firstName, string lastName)
         {
+            if (string.IsNullOrEmpty(firstName)) throw new ArgumentNullException($"{nameof(firstName)} is null or empty");
+            if (string.IsNullOrEmpty(lastName)) throw new ArgumentNullException($"{nameof(lastName)} is null or empty");
             FirstName = firstName;
             LastName = lastName;
         }
