@@ -13,7 +13,7 @@ namespace DelegatesAndEvents.Models
         public User Person { get; }
         public DateTime TakeDate { get; } = DateTime.Now;
         public DateTime EndDate { get; private set; } 
-        public int DayLeft => (EndDate - DateTime.Now).Days;
+        public int DayLeft => (EndDate - DateTime.Today).Days;
 
         public Order(User user, Book book)
         {
