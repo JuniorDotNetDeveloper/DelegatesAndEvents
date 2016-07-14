@@ -23,21 +23,6 @@ namespace TestOut
 
             Order testOrder = new Order(testUser, b1);
 
-
-            //Subscribe<Author> authorSubscriber = new Subscribe<Author>(authorPublisher);
-            //Subscribe<Book> bookSubscriber = new Subscribe<Book>(pubBook);
-
-            //store.BooksInStore.Add(new Book(a1, "new book", new DateTime(2002, 12, 12)));
-
-            //bookSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
-            //authorSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
-
-            ////a1.AddNewBook(b1, pubBook);
-            //pubBook.PublishData(b1);
-            //authorPublisher.PublishData(a1);
-
-            //Console.WriteLine(b1);
-
             Console.ReadLine();
         }
     }

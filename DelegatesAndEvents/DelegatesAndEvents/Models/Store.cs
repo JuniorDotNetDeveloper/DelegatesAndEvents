@@ -16,6 +16,7 @@ namespace DelegatesAndEvents.Models
 
         public void ExtendStoreLists(object sender, EventArguments<Book> newBook)
         {
+            if (newBook._Object == null) throw new ArgumentNullException($"EventArg: {nameof(newBook._Object)} is null ");
             BooksInStore.Add(newBook._Object);
             WriteInFile(newBook._Object);
             Console.WriteLine("New book added");
@@ -23,6 +24,7 @@ namespace DelegatesAndEvents.Models
 
         public void ExtendStoreLists(object sender, EventArguments<Author> newAuthor)
         {
+            if (newAuthor._Object == null) throw new ArgumentNullException($"EventArg: {nameof(newAuthor._Object)} is null ");
             AuthorsInStore.Add(newAuthor._Object);
             Console.WriteLine("new author added");
         }
