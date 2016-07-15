@@ -14,20 +14,51 @@ namespace DelegatesAndEvents.Models
         public BookStatus Status { get; set; } = BookStatus.Free;
         public IList<Author> Authors { get; } = new List<Author>();
 
-        public int HowOldIs => DateTime.Now.Year - PublicationDate.Year; 
+        public int HowOldIs => DateTime.Now.Year - PublicationDate.Year;
 
-        public Book(Author author, string bookName, DateTime publicationDate, string description)
+
+        //private Book(string bookName, DateTime publicationDate)
+        //{
+        //    if (string.IsNullOrEmpty(bookName))
+        //        throw new ArgumentNullException($"Next field named: {nameof(bookName)} is null or empty");
+        //    if (publicationDate == null)
+        //        throw new ArgumentNullException($"{nameof(publicationDate)} is requared");
+
+        //    Name = bookName;
+        //    PublicationDate = publicationDate;
+        //}
+
+        //public Book(Author author, string bookName, DateTime publicationDate, string description)
+        //{
+        //    ValidateInput(bookName, publicationDate, description);
+        //    if (author == null) throw new ArgumentNullException($"{nameof(author)} is requared");
+
+        //    Authors.Add(author);
+        //    Name = bookName;
+        //    PublicationDate = publicationDate;
+            
+        //}
+
+       
+        public Book(List<Author> authors, string bookName, DateTime publicationDate, string description)
         {
-            if (author == null)  throw new ArgumentNullException($"{nameof(author)} is requared");
-            if (string.IsNullOrEmpty(bookName)) throw new ArgumentNullException($"Next field named: {nameof(bookName)} is null or empty");
-            if (publicationDate == null) throw new ArgumentNullException($"{nameof(publicationDate)} is requared");
-
-            Authors.Add(author);
+            ValidateInput(authors, bookName, publicationDate, description);
+            
+            Authors = authors;
             Name = bookName;
             PublicationDate = publicationDate;
-            Description = description?.ToString() ?? "Without description";
         }
 
+        private void ValidateInput(List<Author> authors, string bookName, DateTime publicationDate, string description)
+        {
+            if (string.IsNullOrEmpty(bookName))
+                throw new ArgumentNullException($"Next field named: {nameof(bookName)} is null or empty");
+            if (publicationDate == null)
+                throw new ArgumentNullException($"{nameof(publicationDate)} is requared");
+            if (authors == null) throw new ArgumentNullException($"{nameof(authors)} is requared");
+
+            Description = description?.ToString() ?? "Without description";
+        }
 
         public override string ToString()
         {

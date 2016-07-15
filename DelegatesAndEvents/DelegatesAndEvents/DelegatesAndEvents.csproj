@@ -48,12 +48,13 @@
     <Compile Include="EventsWork\NewBookFromAuthorEvent.cs" />
     <Compile Include="EventsWork\Publisher.cs" />
     <Compile Include="EventsWork\Subscribe.cs" />
-    <Compile Include="Infrastructure\Factory.cs" />
+    <Compile Include="Infrastructure\AuthorFactory.cs" />
+    <Compile Include="Infrastructure\BookFactory.cs" />
     <Compile Include="Linq.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\IdentifyClass.cs" />
-    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />

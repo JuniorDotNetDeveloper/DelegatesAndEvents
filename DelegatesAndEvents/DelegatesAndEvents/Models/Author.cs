@@ -12,14 +12,15 @@ namespace DelegatesAndEvents.Models
         public string LastName { get; }
         public IList<Book> PersonalBooks { get;  } = new List<Book>();
 
-
         //private NewBookFromAuthorEvent MyEvent = new NewBookFromAuthorEvent();
         public Author(string firstName, string lastName, IList<Book> personalBooks = null)
         {
-            if (string.IsNullOrEmpty(firstName)) throw new ArgumentNullException($"{nameof(firstName)} is null or empty");
-            if (string.IsNullOrEmpty(lastName)) throw new ArgumentNullException($"{nameof(lastName)} is null or empty");
-            if (personalBooks != null)
-                PersonalBooks = personalBooks;
+            if (string.IsNullOrEmpty(firstName))
+                throw new ArgumentNullException($"{nameof(firstName)} is null or empty");
+            if (string.IsNullOrEmpty(lastName))
+                throw new ArgumentNullException($"{nameof(lastName)} is null or empty");
+
+            PersonalBooks = personalBooks ?? null;
             FirstName = firstName;
             LastName = lastName;
         }
