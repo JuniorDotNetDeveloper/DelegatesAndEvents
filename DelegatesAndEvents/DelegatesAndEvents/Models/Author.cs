@@ -1,6 +1,8 @@
 ﻿using DelegatesAndEvents.EventsWork;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DelegatesAndEvents.Models
 {
@@ -12,10 +14,12 @@ namespace DelegatesAndEvents.Models
 
 
         //private NewBookFromAuthorEvent MyEvent = new NewBookFromAuthorEvent();
-        public Author(string firstName, string lastName)
+        public Author(string firstName, string lastName, IList<Book> personalBooks = null)
         {
             if (string.IsNullOrEmpty(firstName)) throw new ArgumentNullException($"{nameof(firstName)} is null or empty");
             if (string.IsNullOrEmpty(lastName)) throw new ArgumentNullException($"{nameof(lastName)} is null or empty");
+            if (personalBooks != null)
+                PersonalBooks = personalBooks;
             FirstName = firstName;
             LastName = lastName;
         }
@@ -25,6 +29,11 @@ namespace DelegatesAndEvents.Models
             if (book == null) throw new ArgumentNullException($"{nameof(book)} is null");
             PersonalBooks.Add(book);
             MyEvent.PublishData(book);
+        }
+
+        public override string ToString()
+        {
+            return $"Author: {FirstName} {LastName}\n";
         }
     }
 }

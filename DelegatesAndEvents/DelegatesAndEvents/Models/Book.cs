@@ -16,7 +16,7 @@ namespace DelegatesAndEvents.Models
 
         public int HowOldIs => DateTime.Now.Year - PublicationDate.Year; 
 
-        public Book(Author author, string bookName, DateTime publicationDate, string description = "")
+        public Book(Author author, string bookName, DateTime publicationDate, string description)
         {
             if (author == null)  throw new ArgumentNullException($"{nameof(author)} is requared");
             if (string.IsNullOrEmpty(bookName)) throw new ArgumentNullException($"Next field named: {nameof(bookName)} is null or empty");

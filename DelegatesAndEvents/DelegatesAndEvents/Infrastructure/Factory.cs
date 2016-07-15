@@ -1,8 +1,7 @@
-﻿using System;
+﻿using DelegatesAndEvents.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DelegatesAndEvents.Factory
 {
@@ -15,5 +14,31 @@ namespace DelegatesAndEvents.Factory
         private SingltoneFactory() { }
 
         
+        public Author CreateNewAuthor(string firstName, string lastName, IList<Book> personalBooks = null)
+        {
+            var author = new Author(firstName, lastName, personalBooks);
+            return author;
+        }
+
+        public Book CreateNewBook(Author author, string bookName, DateTime publicationDate, string optionalDescription = null)
+        {
+            if (string.IsNullOrWhiteSpace(optionalDescription))
+                optionalDescription = "This book is without Description";
+
+            var book = new Book(author, bookName, publicationDate, optionalDescription);
+            return book;
+        }
+
+        public Order CreateNewOrder(User user, Book book)
+        {
+            var order = new Order(user, book);
+            return order;
+        }
+
+        public Store CreateNewStore()
+        {
+            var store = new Store();
+            return store;
+        }
     }
 }

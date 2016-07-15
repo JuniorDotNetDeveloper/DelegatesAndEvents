@@ -20,6 +20,5 @@ namespace DelegatesAndEvents.Models
             FirstName = firstName;
             LastName = lastName;
         }
-
     }
 }
