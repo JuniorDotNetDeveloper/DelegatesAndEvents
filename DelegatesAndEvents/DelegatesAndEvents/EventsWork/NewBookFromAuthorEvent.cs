@@ -13,10 +13,7 @@ namespace DelegatesAndEvents.EventsWork
         
         public void DoOnNewBook(Book book)
         {
-            if (NewBook != null)
-            {
-                NewBook(this, book);
-            }
+                NewBook?.Invoke(this, book);
         }
     }
 }

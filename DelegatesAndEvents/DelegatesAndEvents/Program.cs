@@ -2,6 +2,7 @@
 using DelegatesAndEvents.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,35 +14,41 @@ namespace TestOut
         static void Main(string[] args)
         {
 
-            //Publisher<Book> pubBook = new Publisher<Book>();
-            //Store store = new Store(pubBook);
+            Publisher<Book> pubBook = new Publisher<Book>();
+            Publisher<Author> authorPublisher = new Publisher<Author>();
 
-            //Author a1 = new Author("John", "White");
-            //Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15));
-            //a1.AddNewBook(b1, pubBook);
+            User testUser = new User("Vladimir", "Pozner");
+            Store store = new Store();
+            Author a1 = new Author("John", "White");
+            Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15), description: "sdf") { Description = "This book is good for beginers"};
 
-            IEnumerable<char> query = "Not what you might expect";
-            string vowels = "aeiou";
-            for (int i = 0; i < vowels.Length; i++)
-            {
-                char vowel = vowels[i];
-                query = query.Where(c => c != vowel);
-            }
-            foreach (char c in query) Console.Write(c);
-        
-            //NewBookFromAuthorEvent evnt = new NewBookFromAuthorEvent();
-            //Store amazone = new Store(evnt);
-
-            //Author a1 = new Author("John", "White");
+            Order testOrder = new Order(testUser, b1);
 
 
-            //Publisher<Author> pub = new Publisher<Author>();
-            //Subscribe<Store> sub = new Subscribe<Store>(pub);
+            //Subscribe<Author> authorSubscriber = new Subscribe<Author>(authorPublisher);
+            //Subscribe<Book> bookSubscriber = new Subscribe<Book>(pubBook);
 
-            //a1.AddNewBook(new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15)), evnt);
+            //store.BooksInStore.Add(new Book(a1, "new book", new DateTime(2002, 12, 12)));
 
+            //bookSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
+            //authorSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
+
+            //a1.AddNewBook(b1, evnt);
+            string text = amazone.ReadFromFile("test.txt");
+
+            Console.WriteLine(text.Contains("C# for Dumms"));
+            Console.WriteLine(text.StartsWith("Was added new book"));
+            Console.WriteLine(text.EndsWith("2012"));
+
+
+            ////a1.AddNewBook(b1, pubBook);
+            //pubBook.PublishData(b1);
+            //authorPublisher.PublishData(a1);
+
+            //Console.WriteLine(b1);
 
             Console.ReadLine();
         }
+
     }
 }
