@@ -22,9 +22,8 @@ namespace DelegatesAndEvents.Models
             LastName = lastName;
         }
 
-        public void TakeTheBook(Book book)
+        public void TakeTheBook(Book book, Claim claim)
         {
-            var claim = new Claim(this, book);
 
             if (claim.GiveTheBook(book))
                 CurrentBooks.Add(book);

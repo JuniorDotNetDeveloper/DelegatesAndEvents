@@ -26,10 +26,11 @@ namespace TestOut
             {
                 var factoryInstance = BookFactory.Instance;
                 
-                //var author2 = factoryInstance.("Alexandr", "Nemoi");
-                
-                
-                //Console.WriteLine(author2);
+                var author2 = new Author("Alexandr", "Nemoi");
+                var book = factoryInstance.CreateNewBook_WithSingleAuthor(author2, "C# for Dumms", new DateTime(2012, 2, 15));
+
+                Console.WriteLine(book);
+                Console.WriteLine(author2);
             }
             catch (ArgumentNullException ex)
             {
