@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DelegatesAndEvents.EventsWork
+namespace EventsRealisation.EventsWork
 {
-    class Publisher<T> : IPublisher<T>
+    internal class Publisher<T> : IPublisher<T>
     {
         public event EventHandler<EventArguments<T>> DataPublisher;
 

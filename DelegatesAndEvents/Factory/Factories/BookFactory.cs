@@ -1,9 +1,8 @@
-﻿using DelegatesAndEvents.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Model.Models;
 
-namespace DelegatesAndEvents.Factory
+namespace Factory.Factories
 {
     sealed class BookFactory
     {
@@ -12,13 +11,6 @@ namespace DelegatesAndEvents.Factory
 
         //Private Constructor 
         private BookFactory() { }
-
-        
-        //public Author CreateNewAuthor(string firstName, string lastName, IList<Book> personalBooks = null)
-        //{
-        //    var author = new Author(firstName, lastName, personalBooks);
-        //    return author;
-        //}
 
         public Book CreateNewBook_WithSingleAuthor(Author author, string bookName, DateTime publicationDate, string optionalDescription = null)
         {
@@ -41,17 +33,5 @@ namespace DelegatesAndEvents.Factory
             var book = new Book(authors, bookName, publicationDate, optionalDescription);
             return book;
         }
-
-        //public Order CreateNewOrder(User user, Book book)
-        //{
-        //    var order = new Order(user, book);
-        //    return order;
-        //}
-
-        //public Store CreateNewStore()
-        //{
-        //    var store = new Store();
-        //    return store;
-        //}
     }
 }

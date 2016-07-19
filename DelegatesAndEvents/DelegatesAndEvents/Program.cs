@@ -1,24 +1,32 @@
-﻿using DelegatesAndEvents.Factory;
-using DelegatesAndEvents.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using EventsRealisation.EventsWork;
+using Factory;
+using Factory.Factories;
+using Model.Models;
+using Infrastructure;
 
-namespace TestOut
+namespace DelegatesAndEvents
 {
     class Program
     {
+        public Program()
+        {
+            ServiceLocator.RegisterAll();
+        }
+
         static void Main(string[] args)
         {
+            var bookFactory = ServiceLocator.Resolver<BookFactory>();
 
-            //Publisher<Book> pubBook = new Publisher<Book>();
-            //Publisher<Author> authorPublisher = new Publisher<Author>();
-            //User testUser = new User("Vladimir", "Pozner");
+            Publisher<Book> pubBook = new Publisher<Book>();
+            Publisher<Author> authorPublisher = new Publisher<Author>();
+            User testUser = new User("Vladimir", "Pozner");
 
-            //Store store = new Store();
-            //Author a1 = new Author("John", "White");
-            //Book b1 = new Book(a1, "C# for Dumms", new DateTime(2012, 2, 15), description: "sdf") { Description = "This book is good for beginers" };
+            Store store = new Store();
+            Author a1 = new Author("John", "White");
+            Book b1 = bookFactory.CreateNewBook_WithSingleAuthor(a1, "C# for Dumms", new DateTime(2012, 2, 15), "This book is good for beginers");
 
-            //Order testOrder = new Order(testUser, b1);
+            Claim testOrder = new Claim(testUser, b1);
 
    
             

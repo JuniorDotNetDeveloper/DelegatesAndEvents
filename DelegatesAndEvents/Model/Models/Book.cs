@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DelegatesAndEvents.Models
+namespace Model.Models
 {
     enum BookStatus : byte { Busy, Free }
 
@@ -15,31 +15,7 @@ namespace DelegatesAndEvents.Models
         public IList<Author> Authors { get; } = new List<Author>();
 
         public int HowOldIs => DateTime.Now.Year - PublicationDate.Year;
-
-
-        //private Book(string bookName, DateTime publicationDate)
-        //{
-        //    if (string.IsNullOrEmpty(bookName))
-        //        throw new ArgumentNullException($"Next field named: {nameof(bookName)} is null or empty");
-        //    if (publicationDate == null)
-        //        throw new ArgumentNullException($"{nameof(publicationDate)} is requared");
-
-        //    Name = bookName;
-        //    PublicationDate = publicationDate;
-        //}
-
-        //public Book(Author author, string bookName, DateTime publicationDate, string description)
-        //{
-        //    ValidateInput(bookName, publicationDate, description);
-        //    if (author == null) throw new ArgumentNullException($"{nameof(author)} is requared");
-
-        //    Authors.Add(author);
-        //    Name = bookName;
-        //    PublicationDate = publicationDate;
-            
-        //}
-
-       
+      
         public Book(List<Author> authors, string bookName, DateTime publicationDate, string description)
         {
             ValidateInput(authors, bookName, publicationDate, description);

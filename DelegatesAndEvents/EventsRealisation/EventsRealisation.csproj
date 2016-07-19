@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{77A5E28E-CF95-455A-90B3-BA9738ED2070}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{2CCDBA7F-78EC-476E-854E-00703D5A4DFB}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DelegatesAndEvents</RootNamespace>
-    <AssemblyName>DelegatesAndEvents</AssemblyName>
+    <RootNamespace>EventsRealisation</RootNamespace>
+    <AssemblyName>EventsRealisation</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,33 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Linq.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="EventsWork\EventArguments.cs" />
+    <Compile Include="EventsWork\IPublisher.cs" />
+    <Compile Include="EventsWork\NewBookFromAuthorEvent.cs" />
+    <Compile Include="EventsWork\Publisher.cs" />
+    <Compile Include="EventsWork\Subscribe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EventsRealisation\EventsRealisation.csproj">
-      <Project>{2ccdba7f-78ec-476e-854e-00703d5a4dfb}</Project>
-      <Name>EventsRealisation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Factory\Factory.csproj">
-      <Project>{7fb42ae6-e5b2-4991-a515-b6beef26862f}</Project>
-      <Name>Factory</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
-      <Project>{617ae0d2-66b1-4b70-a24b-1e70678e946a}</Project>
-      <Name>Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{ba5c9288-7a84-43de-9771-3526ea4f0206}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
