@@ -18,14 +18,16 @@ namespace Model.Models
             if (string.IsNullOrEmpty(lastName))
                 throw new ArgumentNullException($"{nameof(lastName)} is null or empty");
 
-            PersonalBooks = personalBooks ?? null;
+            PersonalBooks = personalBooks ?? new List<Book>();
             FirstName = firstName;
             LastName = lastName;
         }
 
         public void AddNewBook(Book book, Publisher<Book> MyEvent)
         {
-            if (book == null) throw new ArgumentNullException($"{nameof(book)} is null");
+            if (book == null)
+                throw new ArgumentNullException($"{nameof(book)} is null");
+
             PersonalBooks.Add(book);
             MyEvent.PublishData(book);
         }

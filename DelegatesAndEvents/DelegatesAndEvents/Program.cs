@@ -26,25 +26,24 @@ namespace DelegatesAndEvents
             Author a1 = new Author("John", "White");
             Book b1 = bookFactory.CreateNewBook_WithSingleAuthor(a1, "C# for Dumms", new DateTime(2012, 2, 15), "This book is good for beginers");
 
+            Subscribe<Author> authorSubscriber = new Subscribe<Author>(authorPublisher);
+            Subscribe<Book> bookSubscriber = new Subscribe<Book>(pubBook);
+
+            store.BooksInStore.Add(b1);
+
+            bookSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
+            authorSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
+
+            a1.AddNewBook(b1, pubBook);
+            pubBook.PublishData(b1);
+//          authorPublisher.PublishData(a1);
+
+            Console.WriteLine(b1);
+
+
+
             Claim testOrder = new Claim(testUser, b1);
-
-   
-            
-            try
-            {
-                var factoryInstance = BookFactory.Instance;
-                
-                var author2 = new Author("Alexandr", "Nemoi");
-                var book = factoryInstance.CreateNewBook_WithSingleAuthor(author2, "C# for Dumms", new DateTime(2012, 2, 15));
-
-                Console.WriteLine(book);
-                Console.WriteLine(author2);
-            }
-            catch (ArgumentNullException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            
+ 
             
             Console.ReadLine();
         }

@@ -6,11 +6,11 @@ namespace Factory.Factories
 {
     sealed class BookFactory
     {
-        private static readonly Lazy<BookFactory> lazyInstance = new Lazy<BookFactory>(() => new BookFactory(), true);
-        public static BookFactory Instance { get { return lazyInstance.Value; } }
+//        private static readonly Lazy<BookFactory> lazyInstance = new Lazy<BookFactory>(() => new BookFactory(), true);
+//        public static BookFactory Instance { get { return lazyInstance.Value; } }
 
         //Private Constructor 
-        private BookFactory() { }
+        public BookFactory() { }
 
         public Book CreateNewBook_WithSingleAuthor(Author author, string bookName, DateTime publicationDate, string optionalDescription = null)
         {

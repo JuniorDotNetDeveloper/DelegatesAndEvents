@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="EventsWork\EventArguments.cs" />
     <Compile Include="EventsWork\IPublisher.cs" />
-    <Compile Include="EventsWork\NewBookFromAuthorEvent.cs" />
     <Compile Include="EventsWork\Publisher.cs" />
     <Compile Include="EventsWork\Subscribe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
