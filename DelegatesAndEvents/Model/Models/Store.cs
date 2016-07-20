@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using EventsRealisation.EventsWork;
+using Model.Interfaces;
 
 namespace Model.Models
 {
-    internal class Store
+    internal class Store : ICustomer
     {
-        
+        public string Customer => $"{StoreName}";
+        public string StoreName { get; } = "Store";
         public IList<Book> BooksInStore { get;  } = new List<Book>();
         public IList<Author> AuthorsInStore { get; } = new List<Author>();
 
@@ -45,5 +47,7 @@ namespace Model.Models
                 tx.WriteLine($"\tPublication Year: {obj.PublicationDate.Year}");
             }
         }
+
+        
     }
 }

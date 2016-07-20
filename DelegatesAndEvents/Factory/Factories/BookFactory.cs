@@ -10,7 +10,6 @@ namespace Factory.Factories
 //        public static BookFactory Instance { get { return lazyInstance.Value; } }
 
         //Private Constructor 
-        public BookFactory() { }
 
         public Book CreateNewBook_WithSingleAuthor(Author author, string bookName, DateTime publicationDate, string optionalDescription = null)
         {

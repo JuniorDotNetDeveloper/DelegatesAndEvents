@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using EventsRealisation.EventsWork;
+using Model.Interfaces;
 
 namespace Model.Models
 {
-    internal class Author : IdentifyClass
+    internal class Author : IdentifyClass, ICustomer
     {
+        public string Customer => $"{FirstName} {LastName}";
         public string FirstName { get; }
         public string LastName { get; }
         public IList<Book> PersonalBooks { get;  } = new List<Book>();

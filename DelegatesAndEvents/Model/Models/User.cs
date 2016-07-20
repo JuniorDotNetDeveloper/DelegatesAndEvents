@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Model.Interfaces;
 
 namespace Model.Models
 {
-    internal class User : IdentifyClass
+    internal class User : IdentifyClass, ICustomer
     {
+        public string Customer => $"{FirstName} {LastName}";
         public string FirstName { get; }
         public string LastName { get; }
         public IList<Book> CurrentBooks { get; } = new List<Book>();
@@ -25,5 +27,7 @@ namespace Model.Models
             if (claim.GiveTheBook(book))
                 CurrentBooks.Add(book);
         }
+
+        
     }
 }

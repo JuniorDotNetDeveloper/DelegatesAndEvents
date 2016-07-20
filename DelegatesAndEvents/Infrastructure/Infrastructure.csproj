@@ -50,6 +50,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EventsRealisation\EventsRealisation.csproj">
+      <Project>{2CCDBA7F-78EC-476E-854E-00703D5A4DFB}</Project>
+      <Name>EventsRealisation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{BA5C9288-7A84-43DE-9771-3526EA4F0206}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

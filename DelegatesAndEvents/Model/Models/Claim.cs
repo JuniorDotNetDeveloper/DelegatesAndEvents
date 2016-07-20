@@ -1,4 +1,5 @@
 ﻿using System;
+using Model.Interfaces;
 
 namespace Model.Models
 {
@@ -6,19 +7,19 @@ namespace Model.Models
     {
         
         public Book Subject { get; }
-        public User Person { get; } 
+        public ICustomer Customer { get; } 
         public DateTime TakeDate { get; } = DateTime.Now;
         public DateTime EndDate { get; private set; } 
         public int DayLeft => (EndDate - DateTime.Today).Days;
 
-        public Claim(User user, Book book)
+        public Claim(ICustomer customer, Book book)
         {
-            if (user == null)
-                throw new ArgumentNullException($"{nameof(user)} is null");
+            if (customer == null)
+                throw new ArgumentNullException($"{nameof(customer)} is null");
             if (book == null)
                 throw new ArgumentNullException($"{nameof(book)} is null");
 
-            Person = user;
+            Customer = customer;
             Subject = book;
             Subject.Status = BookStatus.Busy;
             EndDate = TakeDate.AddDays(21);
@@ -26,7 +27,8 @@ namespace Model.Models
 
         public bool GiveTheBook(Book book)
         {
-            if (Person.CurrentBooks.Count > 3) // 
+            var u = Customer as User;
+            if (u?.CurrentBooks.Count > 3 | book?.Status == BookStatus.Busy)
                 return false;
             return true;
         }

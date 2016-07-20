@@ -1,4 +1,7 @@
-﻿using Ninject;
+﻿using EventsRealisation.EventsWork;
+using Model.Interfaces;
+using Model.Models;
+using Ninject;
 
 namespace Infrastructure
 {
@@ -8,7 +11,9 @@ namespace Infrastructure
 
         public static void RegisterAll()
         {
-//            _kernel.Bind<>()
+            _kernel.Bind<IPublisher<Book>>().To<Publisher<Book>>();
+            _kernel.Bind<IPublisher<Author>>().To<Publisher<Author>>();
+            _kernel.Bind<ICustomer>().To<User>();
         }
 
 

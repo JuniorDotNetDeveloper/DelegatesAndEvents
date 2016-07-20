@@ -33,7 +33,7 @@ namespace Model.Models
                 throw new ArgumentNullException($"{nameof(publicationDate)} is requared");
             if (authors == null) throw new ArgumentNullException($"{nameof(authors)} is requared");
 
-            Description = description?.ToString() ?? "Without description";
+            Description = description ?? "Without description";
         }
 
         public override string ToString()

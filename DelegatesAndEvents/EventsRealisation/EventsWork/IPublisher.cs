@@ -2,7 +2,7 @@
 
 namespace EventsRealisation.EventsWork
 {
-    interface IPublisher<T>
+    public interface IPublisher<T>
     {
         event EventHandler<EventArguments<T>> DataPublisher;
 
