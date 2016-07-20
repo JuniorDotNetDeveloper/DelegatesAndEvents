@@ -1,6 +1,9 @@
-﻿namespace EventsRealisation.EventsWork
+﻿
+using Publisher.Abstraction.Interfaces;
+
+namespace EventsRealisation.EventsWork
 {
-    public class Subscribe<T> 
+    internal class Subscribe<T> 
     {
         public IPublisher<T> Publisher { get; private set; }
         public Subscribe(IPublisher<T> publisher)

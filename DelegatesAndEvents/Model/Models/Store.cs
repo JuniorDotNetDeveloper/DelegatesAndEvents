@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using EventsRealisation.EventsWork;
-using Model.Interfaces;
-
+using  Publisher.Abstraction;
 namespace Model.Models
 {
-    internal class Store : ICustomer
+    internal class Store 
     {
         public string Customer => $"{StoreName}";
         public string StoreName { get; } = "Store";

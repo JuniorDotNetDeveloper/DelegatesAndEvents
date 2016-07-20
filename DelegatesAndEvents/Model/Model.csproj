@@ -40,11 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\ICustomer.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Bibliotec.cs" />
     <Compile Include="Models\Book.cs" />
-    <Compile Include="Models\Claim.cs" />
+    <Compile Include="Helper\Claim.cs" />
     <Compile Include="Models\IdentifyClass.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\User.cs" />
@@ -55,6 +54,13 @@
       <Project>{2ccdba7f-78ec-476e-854e-00703d5a4dfb}</Project>
       <Name>EventsRealisation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Publisher.Abstraction\Publisher.Abstraction.csproj">
+      <Project>{de04f52e-405e-4ed0-a8af-cfef928fe9dc}</Project>
+      <Name>Publisher.Abstraction</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

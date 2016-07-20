@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EventsRealisation.EventsWork
+namespace Publisher.Abstraction
 {
     public class EventArguments<T> : EventArgs
     {

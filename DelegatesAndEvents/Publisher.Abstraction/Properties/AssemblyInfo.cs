@@ -5,16 +5,16 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EventsRealisation")]
+[assembly: AssemblyTitle("Publisher.Abstraction")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EventsRealisation")]
+[assembly: AssemblyProduct("Publisher.Abstraction")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: InternalsVisibleTo("EventsRealisation")]
 [assembly: InternalsVisibleTo("Model")]
-[assembly: InternalsVisibleTo("DelegatesAndEvents")]
 [assembly: InternalsVisibleTo("Infrastructure")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2ccdba7f-78ec-476e-854e-00703d5a4dfb")]
+[assembly: Guid("de04f52e-405e-4ed0-a8af-cfef928fe9dc")]
 
 // Version information for an assembly consists of the following four values:
 //

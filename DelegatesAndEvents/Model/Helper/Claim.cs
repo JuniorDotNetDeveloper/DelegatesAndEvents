@@ -1,25 +1,25 @@
 ﻿using System;
-using Model.Interfaces;
+using Model.Models;
 
-namespace Model.Models
+namespace Model.Helper
 {
     internal class Claim : IdentifyClass
     {
         
         public Book Subject { get; }
-        public ICustomer Customer { get; } 
+        public User Person { get; } 
         public DateTime TakeDate { get; } = DateTime.Now;
         public DateTime EndDate { get; private set; } 
         public int DayLeft => (EndDate - DateTime.Today).Days;
 
-        public Claim(ICustomer customer, Book book)
+        public Claim(User person, Book book)
         {
-            if (customer == null)
-                throw new ArgumentNullException($"{nameof(customer)} is null");
+            if (person == null)
+                throw new ArgumentNullException($"{nameof(person)} is null");
             if (book == null)
                 throw new ArgumentNullException($"{nameof(book)} is null");
 
-            Customer = customer;
+            Person = person;
             Subject = book;
             Subject.Status = BookStatus.Busy;
             EndDate = TakeDate.AddDays(21);
@@ -27,8 +27,8 @@ namespace Model.Models
 
         public bool GiveTheBook(Book book)
         {
-            var u = Customer as User;
-            if (u?.CurrentBooks.Count > 3 | book?.Status == BookStatus.Busy)
+            
+            if (Person?.CurrentBooks.Count > 3 | book?.Status == BookStatus.Busy)
                 return false;
             return true;
         }

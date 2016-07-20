@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using EventsRealisation.EventsWork;
-using Model.Interfaces;
 
 namespace Model.Models
 {
-    internal class Author : IdentifyClass, ICustomer
+    internal class Author : IdentifyClass
     {
         public string Customer => $"{FirstName} {LastName}";
         public string FirstName { get; }

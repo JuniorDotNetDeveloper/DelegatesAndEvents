@@ -12,7 +12,7 @@ namespace Model.Models
         public DateTime PublicationDate{ get; }
         public string Description { get; set; }
         public BookStatus Status { get; set; } = BookStatus.Free;
-        public IList<Author> Authors { get; } = new List<Author>();
+        public IList<Author> Authors { get; }
 
         public int HowOldIs => DateTime.Now.Year - PublicationDate.Year;
       

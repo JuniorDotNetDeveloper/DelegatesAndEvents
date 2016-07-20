@@ -1,9 +1,9 @@
 ﻿using System;
 using EventsRealisation.EventsWork;
-using Factory;
 using Factory.Factories;
 using Model.Models;
 using Infrastructure;
+using Model.Helper;
 
 namespace DelegatesAndEvents
 {
@@ -16,20 +16,22 @@ namespace DelegatesAndEvents
 
         static void Main(string[] args)
         {
+
             var bookFactory = ServiceLocator.Resolver<BookFactory>();
-
-
             //Publisher<Book> pubBook = new Publisher<Book>();
             //Publisher<Author> authorPublisher = new Publisher<Author>();
             User testUser = new User("Vladimir", "Pozner");
-
+            
             Store store = new Store();
             Author a1 = new Author("John", "White");
             Book b1 = bookFactory.CreateNewBook_WithSingleAuthor(a1, "C# for Dumms", new DateTime(2012, 2, 15), "This book is good for beginers");
 
             var subscribeTheBook = ServiceLocator.Resolver<Subscribe<Author>>();
             subscribeTheBook.Publisher.DataPublisher += store.ExtendStoreLists;
+            
 
+
+            //testUser.TakeTheBook(b1, claim);
             //Subscribe<Author> authorSubscriber = new Subscribe<Author>(authorPublisher);
             //Subscribe<Book> bookSubscriber = new Subscribe<Book>(pubBook);
 

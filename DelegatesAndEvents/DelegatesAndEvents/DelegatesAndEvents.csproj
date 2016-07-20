@@ -70,6 +70,10 @@
       <Project>{ba5c9288-7a84-43de-9771-3526ea4f0206}</Project>
       <Name>Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Publisher.Abstraction\Publisher.Abstraction.csproj">
+      <Project>{de04f52e-405e-4ed0-a8af-cfef928fe9dc}</Project>
+      <Name>Publisher.Abstraction</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

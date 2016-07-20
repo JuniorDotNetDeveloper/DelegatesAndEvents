@@ -1,7 +1,7 @@
-﻿using EventsRealisation.EventsWork;
-using Model.Interfaces;
-using Model.Models;
+﻿using Model.Models;
 using Ninject;
+using Publisher.Abstraction.Interfaces;
+using EventsRealisation.EventsWork;
 
 namespace Infrastructure
 {
@@ -13,7 +13,6 @@ namespace Infrastructure
         {
             _kernel.Bind<IPublisher<Book>>().To<Publisher<Book>>();
             _kernel.Bind<IPublisher<Author>>().To<Publisher<Author>>();
-            _kernel.Bind<ICustomer>().To<User>();
         }
 
 

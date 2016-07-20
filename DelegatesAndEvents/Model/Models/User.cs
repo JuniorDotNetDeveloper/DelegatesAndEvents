@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Model.Interfaces;
+using Model.Helper;
+
 
 namespace Model.Models
 {
-    internal class User : IdentifyClass, ICustomer
+    internal class User : IdentifyClass
     {
         public string Customer => $"{FirstName} {LastName}";
         public string FirstName { get; }
@@ -22,12 +23,11 @@ namespace Model.Models
             LastName = lastName;
         }
 
-        public void TakeTheBook(Book book, Claim claim)
+        public void TakeTheBook(Book book)
         {
+            var claim = new Claim(this, book);
             if (claim.GiveTheBook(book))
                 CurrentBooks.Add(book);
         }
-
-        
     }
 }
