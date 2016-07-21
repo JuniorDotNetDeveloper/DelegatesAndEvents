@@ -5,19 +5,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Model")]
+[assembly: AssemblyTitle("DelegatesAndEvents.UnitTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Model")]
+[assembly: AssemblyProduct("DelegatesAndEvents.UnitTest")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: InternalsVisibleTo("DelegatesAndEvents")]
-[assembly: InternalsVisibleTo("Factory")]
-[assembly: InternalsVisibleTo("Infrastructure")]
-[assembly: InternalsVisibleTo("DelegatesAndEvents.UnitTest")]
-[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -25,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ba5c9288-7a84-43de-9771-3526ea4f0206")]
+[assembly: Guid("a7847f49-c6a6-4e37-b4e3-b233895ba638")]
 
 // Version information for an assembly consists of the following four values:
 //

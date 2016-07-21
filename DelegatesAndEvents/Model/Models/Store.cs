@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using  Publisher.Abstraction;
+using Publisher.Abstraction;
 namespace Model.Models
 {
     internal class Store 

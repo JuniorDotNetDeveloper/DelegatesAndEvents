@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstract.Repository", "IRep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publisher.Abstraction", "Publisher.Abstraction\Publisher.Abstraction.csproj", "{DE04F52E-405E-4ED0-A8AF-CFEF928FE9DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegatesAndEvents.UnitTest", "DelegatesAndEvents.UnitTest\DelegatesAndEvents.UnitTest.csproj", "{A7847F49-C6A6-4E37-B4E3-B233895BA638}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{DE04F52E-405E-4ED0-A8AF-CFEF928FE9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE04F52E-405E-4ED0-A8AF-CFEF928FE9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE04F52E-405E-4ED0-A8AF-CFEF928FE9DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7847F49-C6A6-4E37-B4E3-B233895BA638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7847F49-C6A6-4E37-B4E3-B233895BA638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7847F49-C6A6-4E37-B4E3-B233895BA638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7847F49-C6A6-4E37-B4E3-B233895BA638}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
