@@ -43,5 +43,20 @@ namespace Model.Models
 
             return $"\nBook name: {Name}\nPublication year: {PublicationDate.Year}\nAuthors: {authors}\nDescription: {Description}\nHow Old: {HowOldIs}";
         }
+
+        public override bool Equals(object other)
+        {
+            var toCompareWith = other as Book;
+            if (toCompareWith == null)
+                return false;
+            return Name == toCompareWith.Name &&
+                Authors == toCompareWith.Authors &&
+                PublicationDate == toCompareWith.PublicationDate;
+        }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() + Authors.GetHashCode() + PublicationDate.GetHashCode();
+        }
     }
 }

@@ -37,5 +37,19 @@ namespace Model.Models
         {
             return $"Author: {FirstName} {LastName}\n";
         }
+
+        public override bool Equals(object obj)
+        {
+            var toCompare = obj as Author;
+            if (toCompare == null)
+                return false;
+            return FirstName == toCompare.FirstName &&
+                   LastName == toCompare.LastName;
+        }
+
+        public override int GetHashCode()
+        {
+            return FirstName.GetHashCode() + LastName.GetHashCode();
+        }
     }
 }
