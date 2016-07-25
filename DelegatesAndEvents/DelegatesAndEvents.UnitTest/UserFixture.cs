@@ -11,29 +11,25 @@ namespace DelegatesAndEvents.UnitTest
     public class UserFixture
     {
         private Mock<User> _userMock;
-        private Mock<Book> _bookMock;
-        private Mock<Claim> _claiMock;
-        private Author _authorMock;
+        private Book _book;
+        private Claim _claim;
+        private Author _author;
         
         [SetUp]
         public void Setup()
         {
-            _authorMock = new Author("firstName", "lastName", new List<Book>());
+            _author = new Author("firstName", "lastName", new List<Book>());
             _userMock = new Mock<User>("FirstName", "lastName");
-            _bookMock = new Mock<Book>(new List<Author> {_authorMock}, "bookName", new DateTime(2012,02,01), "description");
+            _book = new Book(new List<Author> {_author}, "bookName", new DateTime(2012,02,01), "description");
         }
         [Test]
         public void When_GiveTheBook_IsCalled()
         {
             //act
-            //_userMock.TakeTheBook(_bookMock.Object);
-            _userMock.Verify(x=>x.TakeTheBook(_bookMock.Object), Times.Once);
-        }
+            _userMock.Object.TakeTheBook(_book);
 
-        [Test]
-        public void WhenTheBookIsBusy_GiveTheBook()
-        {
-            
+            //Assert
+            Assert.AreEqual(true, _userMock.Object.CurrentBooks.Contains(_book));
         }
     }
 }

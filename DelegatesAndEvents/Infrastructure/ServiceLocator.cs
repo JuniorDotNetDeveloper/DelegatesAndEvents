@@ -2,6 +2,8 @@
 using Ninject;
 using Publisher.Abstraction.Interfaces;
 using EventsRealisation.EventsWork;
+using IRepository.Interfaces;
+using Repository.Implementation;
 
 namespace Infrastructure
 {
@@ -13,6 +15,7 @@ namespace Infrastructure
         {
             _kernel.Bind<IPublisher<Book>>().To<Publisher<Book>>();
             _kernel.Bind<IPublisher<Author>>().To<Publisher<Author>>();
+            _kernel.Bind<IRepository<Book>>().To<BookRepository>();
         }
 
 

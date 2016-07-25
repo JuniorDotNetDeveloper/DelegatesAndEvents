@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Model.Models
 {
-    enum BookStatus : byte { Busy, Free }
+    public enum BookStatus : byte { Busy, Free }
 
-    internal class Book : IdentifyClass
+    public class Book : IdentifyClass
     {
         public string Name { get; }
         public DateTime PublicationDate{ get; }

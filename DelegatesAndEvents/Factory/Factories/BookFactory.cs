@@ -4,7 +4,7 @@ using Model.Models;
 
 namespace Factory.Factories
 {
-    sealed class BookFactory
+    public sealed class BookFactory
     {
 //        private static readonly Lazy<BookFactory> lazyInstance = new Lazy<BookFactory>(() => new BookFactory(), true);
 //        public static BookFactory Instance { get { return lazyInstance.Value; } }

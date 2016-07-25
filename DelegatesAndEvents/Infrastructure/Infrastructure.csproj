@@ -55,6 +55,10 @@
       <Project>{2ccdba7f-78ec-476e-854e-00703d5a4dfb}</Project>
       <Name>EventsRealisation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IRepository\Abstract.Repository.csproj">
+      <Project>{E153BE48-A16F-4584-B4E4-A5495D63B2D2}</Project>
+      <Name>Abstract.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{BA5C9288-7A84-43DE-9771-3526EA4F0206}</Project>
       <Name>Model</Name>
@@ -62,6 +66,10 @@
     <ProjectReference Include="..\Publisher.Abstraction\Publisher.Abstraction.csproj">
       <Project>{de04f52e-405e-4ed0-a8af-cfef928fe9dc}</Project>
       <Name>Publisher.Abstraction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository.Implementation\Repository.Implementation.csproj">
+      <Project>{6F847D14-3B4A-4548-9E35-6882AC496A47}</Project>
+      <Name>Repository.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -21,14 +21,13 @@ namespace Model.Helper
 
             Person = person;
             Subject = book;
-            Subject.Status = BookStatus.Busy;
             EndDate = TakeDate.AddDays(21);
         }
 
-        public bool GiveTheBook(Book book)
+        public bool GiveTheBook()
         {
             
-            if (Person?.CurrentBooks.Count > 3 | book?.Status == BookStatus.Busy)
+            if (Person?.CurrentBooks.Count > 3 | Subject?.Status == BookStatus.Busy)
                 return false;
             return true;
         }

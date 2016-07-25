@@ -4,7 +4,7 @@ using Publisher.Abstraction.Interfaces;
 
 namespace EventsRealisation.EventsWork
 {
-    internal class Publisher<T> : IPublisher<T>
+    public class Publisher<T> : IPublisher<T>
     {
         public event EventHandler<EventArguments<T>> DataPublisher;
 

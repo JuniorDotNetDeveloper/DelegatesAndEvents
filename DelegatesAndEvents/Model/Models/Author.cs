@@ -4,7 +4,7 @@ using EventsRealisation.EventsWork;
 
 namespace Model.Models
 {
-    internal class Author : IdentifyClass
+    public class Author : IdentifyClass
     {
         public string Customer => $"{FirstName} {LastName}";
         public string FirstName { get; }

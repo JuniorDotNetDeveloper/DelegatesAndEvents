@@ -5,7 +5,7 @@ using Model.Helper;
 
 namespace Model.Models
 {
-    internal class User : IdentifyClass
+    public class User : IdentifyClass
     {
         public string Customer => $"{FirstName} {LastName}";
         public string FirstName { get; }
@@ -26,7 +26,7 @@ namespace Model.Models
         public void TakeTheBook(Book book)
         {
             var claim = new Claim(this, book);
-            if (claim.GiveTheBook(book))
+            if (claim.GiveTheBook())
                 CurrentBooks.Add(book);
         }
     }

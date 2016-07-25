@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Linq;
 using EventsRealisation.EventsWork;
 using Factory.Factories;
 using Model.Models;
 using Infrastructure;
+using IRepository.Interfaces;
 using Model.Helper;
+using Repository.Implementation;
 
 namespace DelegatesAndEvents
 {
@@ -28,14 +31,17 @@ namespace DelegatesAndEvents
 
             var subscribeTheBook = ServiceLocator.Resolver<Subscribe<Author>>();
             subscribeTheBook.Publisher.DataPublisher += store.ExtendStoreLists;
-            
 
-
+            var books = ServiceLocator.Resolver<BookRepository>();
+            var bookCollection = books.Collection;
+            var s=bookCollection.First(b => b.Name == b.Name);
+            Console.WriteLine(s);
             //testUser.TakeTheBook(b1, claim);
             //Subscribe<Author> authorSubscriber = new Subscribe<Author>(authorPublisher);
             //Subscribe<Book> bookSubscriber = new Subscribe<Book>(pubBook);
 
             store.BooksInStore.Add(b1);
+            
 
             //bookSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
             //authorSubscriber.Publisher.DataPublisher += store.ExtendStoreLists;
