@@ -10,5 +10,7 @@ namespace EventsRealisation.EventsWork
         {
             Publisher = publisher;
         }
+
+
     }
 }

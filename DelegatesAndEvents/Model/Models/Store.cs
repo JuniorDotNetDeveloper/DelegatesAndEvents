@@ -5,7 +5,7 @@ using System.Linq;
 using Publisher.Abstraction;
 namespace Model.Models
 {
-    internal class Store 
+    public class Store 
     {
         public string Customer => $"{StoreName}";
         public string StoreName { get; } = "Store";

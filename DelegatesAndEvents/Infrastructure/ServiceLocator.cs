@@ -16,14 +16,11 @@ namespace Infrastructure
             _kernel.Bind<IPublisher<Book>>().To<Publisher<Book>>();
             _kernel.Bind<IPublisher<Author>>().To<Publisher<Author>>();
             _kernel.Bind<IRepository<Book>>().To<BookRepository>();
+            _kernel.Bind<IRepository<Author>>().To<AuthorRepository>();
         }
 
 
-        /// <summary>
-        /// Resolver method, which return first created in container object
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns>a <see cref="T"/></returns>
+        
         public static T Resolver<T>() => _kernel.Get<T>();
     }
 }

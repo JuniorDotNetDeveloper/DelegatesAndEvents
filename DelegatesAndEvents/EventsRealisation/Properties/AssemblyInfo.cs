@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("Model")]
 [assembly: InternalsVisibleTo("DelegatesAndEvents")]
 [assembly: InternalsVisibleTo("Infrastructure")]
+[assembly: InternalsVisibleTo("DelegatesAndEvents.UnitTest")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

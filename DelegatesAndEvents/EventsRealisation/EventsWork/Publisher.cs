@@ -9,17 +9,17 @@ namespace EventsRealisation.EventsWork
         public event EventHandler<EventArguments<T>> DataPublisher;
 
         public void PublishData(T data)
-    {
-        if (data != null)
         {
-            EventArguments<T> message = (EventArguments<T>)Activator.CreateInstance(typeof(EventArguments<T>), data);
-            OnDataPunlisher(message);
+            if (data != null)
+            {
+                EventArguments<T> message = (EventArguments<T>)Activator.CreateInstance(typeof(EventArguments<T>), data);
+                OnDataPunlisher(message);
+            }
+        }
+
+        private void OnDataPunlisher(EventArguments<T> obj)
+        {
+            DataPublisher?.Invoke(this, obj);
         }
     }
-
-    private void OnDataPunlisher(EventArguments<T> obj)
-    {
-        DataPublisher?.Invoke(this, obj);
-    }
-}
 }

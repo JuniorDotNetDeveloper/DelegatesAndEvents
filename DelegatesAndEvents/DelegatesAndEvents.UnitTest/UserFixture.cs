@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Model.Helper;
 using NUnit.Framework;
 using Model.Models;
@@ -10,26 +11,44 @@ namespace DelegatesAndEvents.UnitTest
     [TestFixture]
     public class UserFixture
     {
-        private Mock<User> _userMock;
+        private User _user;
         private Book _book;
-        private Claim _claim;
+        //private Claim _claim;
         private Author _author;
         
         [SetUp]
         public void Setup()
         {
             _author = new Author("firstName", "lastName", new List<Book>());
-            _userMock = new Mock<User>("FirstName", "lastName");
+            _user = new User("FirstName", "lastName");
             _book = new Book(new List<Author> {_author}, "bookName", new DateTime(2012,02,01), "description");
         }
         [Test]
         public void When_GiveTheBook_IsCalled()
         {
             //act
-            _userMock.Object.TakeTheBook(_book);
+            _user.TakeTheBook(_book);
 
             //Assert
-            Assert.AreEqual(true, _userMock.Object.CurrentBooks.Contains(_book));
+            Assert.AreEqual(true, _user.CurrentBooks.Contains(_book));
         }
+
+        [TestCase("","")]
+        [TestCase(" ", "")]
+        public void CreateUserWithoutName(string fname, string lname)
+        {
+            //Assert
+            Assert.Throws<ArgumentNullException>(() => new User(fname, lname));
+        }
+
+        //[Test]
+        //public void TakeTheBook_AddNewBookInCurrentBooks()
+        //{
+        //   //Act
+        //    _user.TakeTheBook(_book);
+
+        //    //Assert
+        //    Assert.Contains(_book, _user.CurrentBooks.ToList());
+        //}
     }
 }

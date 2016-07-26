@@ -67,7 +67,7 @@
       <Name>Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\IRepository\Abstract.Repository.csproj">
-      <Project>{E153BE48-A16F-4584-B4E4-A5495D63B2D2}</Project>
+      <Project>{e153be48-a16f-4584-b4e4-a5495d63b2d2}</Project>
       <Name>Abstract.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
@@ -79,7 +79,7 @@
       <Name>Publisher.Abstraction</Name>
     </ProjectReference>
     <ProjectReference Include="..\Repository.Implementation\Repository.Implementation.csproj">
-      <Project>{6F847D14-3B4A-4548-9E35-6882AC496A47}</Project>
+      <Project>{6f847d14-3b4a-4548-9e35-6882ac496a47}</Project>
       <Name>Repository.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
