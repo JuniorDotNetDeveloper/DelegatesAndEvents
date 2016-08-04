@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using Model.Models;
 using Repository.Implementation.Contexts;
@@ -10,7 +12,7 @@ namespace Repository.Implementation
     public class AuthorRepository : IRepository<Author>
     {
         private readonly ModelContext<Author> _authorRepository;
-
+        private string _connection = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
 
         public AuthorRepository()
         {
@@ -25,8 +27,16 @@ namespace Repository.Implementation
 
         public void Update(Author item)
         {
-            throw new NotImplementedException();
+            using (var sqlConnection = new SqlConnection(_connection))
+            {
+                sqlConnection.Open();
+                var sqlUpdateQuery = "Update Author SET Description = @authorDescription where Id = 1";
+                var sqlCommand = new SqlCommand(sqlUpdateQuery, sqlConnection);
+                sqlCommand.ExecuteScalar();
+            }
         }
+
+
 
         public void Delete(int id)
         {
@@ -43,28 +53,44 @@ namespace Repository.Implementation
             GC.SuppressFinalize(this);
         }
 
+
+
         private void Initializer()
         {
-            List<Author> authorList = new List<Author>()
+
+            using (var sqlConnection = new SqlConnection(_connection))
             {
-                new Author("Alexandr", "Pushkin"),
-                new Author("Lev", "Tolstoi"),
-                new Author("Maxin", "Gorikii"),
-                new Author("Alexei", "Tolstoi"),
-                new Author("Nikolai", "Gogoli"),
-                new Author("Mihail", "Lermontov"),
-                new Author("Fedor", "Tiutchev"),
-                new Author("Ivan", "Turgenev"),
-                new Author("Afanasii", "Fet"),
-                new Author("Fedor", "Dostoevskii"),
-                new Author("Appolon", "Maikov"),
-                new Author("Alexandr", "Ostrovskii"),
-                new Author("Mihail", "Saltikov-Shedrin"),
-                new Author("Nikolai", "Leskov"),
-                new Author("Gleb", "Uspenskii"),
-                new Author("NoBook", "Author")
-            };
-            _authorRepository.Objects = authorList;
+                sqlConnection.Open();
+                string createTable = "create table NewTestTable(Id bigint identity(1,1), FirstName nvarchar(100) not null, LastName nvarchar(100) not null)";
+                var sqlCommand = new SqlCommand(createTable, sqlConnection);
+
+                using (sqlCommand)
+                {
+                    sqlCommand.ExecuteNonQuery();
+                }
+
+            }
+
+            //List<Author> authorList = new List<Author>()
+            //{
+            //    new Author("Alexandr", "Pushkin"),
+            //    new Author("Lev", "Tolstoi"),
+            //    new Author("Maxin", "Gorikii"),
+            //    new Author("Alexei", "Tolstoi"),
+            //    new Author("Nikolai", "Gogoli"),
+            //    new Author("Mihail", "Lermontov"),
+            //    new Author("Fedor", "Tiutchev"),
+            //    new Author("Ivan", "Turgenev"),
+            //    new Author("Afanasii", "Fet"),
+            //    new Author("Fedor", "Dostoevskii"),
+            //    new Author("Appolon", "Maikov"),
+            //    new Author("Alexandr", "Ostrovskii"),
+            //    new Author("Mihail", "Saltikov-Shedrin"),
+            //    new Author("Nikolai", "Leskov"),
+            //    new Author("Gleb", "Uspenskii"),
+            //    new Author("NoBook", "Author")
+            //};
+            //_authorRepository.Objects = authorList;
         }
     }
 }
