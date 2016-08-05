@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 
 namespace Model.Models
 {
-    class Bibliotec : Entity
+    public class Bibliotec : Entity
     {
         public virtual Book AllBook { get; }
         public virtual Author AllAuthor{ get; }
