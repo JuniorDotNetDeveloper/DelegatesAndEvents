@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Model.Models;
 
 namespace IRepository.Interfaces
 {
-    public interface IRepository<T> : IDisposable
-        where T : class
+    public interface IRepository<TEntity> 
+        where TEntity : Entity
     {
-        IEnumerable<T> Collection { get; }
-        void Create(T item); 
-        void Update(T item);
-        void Delete(int id);
-        T FindById(int id);
+        IEnumerable<TEntity> Collection { get; }
+        void Create(TEntity entity); 
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
+        void Save(TEntity entity);
+        TEntity FindById(int id);
     }
 }

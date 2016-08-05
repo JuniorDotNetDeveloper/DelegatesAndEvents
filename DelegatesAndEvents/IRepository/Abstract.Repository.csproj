@@ -40,12 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IBookRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{ba5c9288-7a84-43de-9771-3526ea4f0206}</Project>
+      <Project>{BA5C9288-7A84-43DE-9771-3526EA4F0206}</Project>
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>

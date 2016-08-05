@@ -5,7 +5,7 @@ using Model.Models;
 namespace Repository.Implementation.Contexts
 {
     public class ModelContext<T> 
-        where T : IdentifyClass
+        where T : Entity
     {
         public List<T> Objects { get; set; }
     }

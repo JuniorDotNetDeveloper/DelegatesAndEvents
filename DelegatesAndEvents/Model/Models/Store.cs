@@ -5,14 +5,14 @@ using System.Linq;
 using Publisher.Abstraction;
 namespace Model.Models
 {
-    public class Store 
+    public class Store : Entity
     {
-        public string Customer => $"{StoreName}";
-        public string StoreName { get; } = "Store";
-        public IList<Book> BooksInStore { get;  } = new List<Book>();
-        public IList<Author> AuthorsInStore { get; } = new List<Author>();
+        public virtual string Customer => $"{StoreName}";
+        public virtual string StoreName { get; } = "Store";
+        public virtual IList<Book> BooksInStore { get;  } = new List<Book>();
+        public virtual IList<Author> AuthorsInStore { get; } = new List<Author>();
 
-        public void ExtendStoreLists(object sender, EventArguments<Book> newBook)
+        public virtual void ExtendStoreLists(object sender, EventArguments<Book> newBook)
         {
             if (newBook._Object == null)
                 throw new ArgumentNullException($"EventArg: {nameof(newBook._Object)} is null ");
@@ -22,7 +22,7 @@ namespace Model.Models
             Console.WriteLine("New book added");
         }
 
-        public void ExtendStoreLists(object sender, EventArguments<Author> newAuthor)
+        public virtual void ExtendStoreLists(object sender, EventArguments<Author> newAuthor)
         {
             if (newAuthor._Object == null)
                 throw new ArgumentNullException($"EventArg: {nameof(newAuthor._Object)} is null ");

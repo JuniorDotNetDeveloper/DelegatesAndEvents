@@ -4,14 +4,17 @@ using EventsRealisation.EventsWork;
 
 namespace Model.Models
 {
-    public class Author : IdentifyClass
+    public class Author : Entity
     {
-        public string Customer => $"{FirstName} {LastName}";
-        public string FirstName { get; }
-        public string LastName { get; }
-        public IList<Book> PersonalBooks { get;  } = new List<Book>();
+        
+        public virtual string Customer => $"{FirstName} {LastName}";
+        public virtual string FirstName { get; }
+        public virtual string LastName { get; }
+        public virtual IList<Book> PersonalBooks { get;  } = new List<Book>();
 
         //private NewBookFromAuthorEvent MyEvent = new NewBookFromAuthorEvent();
+
+        protected Author() {}
         public Author(string firstName, string lastName, IList<Book> personalBooks = null)
         {
             if (string.IsNullOrEmpty(firstName))
@@ -24,7 +27,7 @@ namespace Model.Models
             LastName = lastName;
         }
 
-        public void AddNewBook(Book book, Publisher<Book> MyEvent)
+        public virtual void AddNewBook(Book book, Publisher<Book> MyEvent)
         {
             if (book == null)
                 throw new ArgumentNullException($"{nameof(book)} is null");
@@ -36,20 +39,6 @@ namespace Model.Models
         public override string ToString()
         {
             return $"Author: {FirstName} {LastName}\n";
-        }
-
-        public override bool Equals(object obj)
-        {
-            var toCompare = obj as Author;
-            if (toCompare == null)
-                return false;
-            return FirstName == toCompare.FirstName &&
-                   LastName == toCompare.LastName;
-        }
-
-        public override int GetHashCode()
-        {
-            return FirstName.GetHashCode() + LastName.GetHashCode();
         }
     }
 }

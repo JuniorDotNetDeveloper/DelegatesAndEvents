@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Net.Http.Headers;
 
 namespace Model.Models
 {
-    class Bibliotec
+    class Bibliotec : Entity
     {
-        public Book AllBook { get; }
-        public Author AllAuthor{ get; }
-        public int BookCount { get; private set; }
-        public DateTime AddDate { get; } = DateTime.Now;
+        public virtual Book AllBook { get; }
+        public virtual Author AllAuthor{ get; }
+        public virtual int BookCount { get; private set; }
+        public virtual DateTime AddDate { get; } = DateTime.Now;
 
 
     }

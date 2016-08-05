@@ -6,16 +6,19 @@ namespace Model.Models
 {
     public enum BookStatus : byte { Busy, Free }
 
-    public class Book : IdentifyClass
+    public class Book : Entity
     {
-        public string Name { get; }
-        public DateTime PublicationDate{ get; }
-        public string Description { get; set; }
-        public BookStatus Status { get; set; } = BookStatus.Free;
-        public IList<Author> Authors { get; }
+        public virtual string Name { get; }
+        public virtual DateTime PublicationDate{ get; }
+        public virtual string Description { get; set; }
+        public virtual BookStatus Status { get; set; } = BookStatus.Free;
+        public virtual IList<Author> Authors { get; }
 
-        public int HowOldIs => DateTime.Now.Year - PublicationDate.Year;
-      
+        public virtual int HowOldIs => DateTime.Now.Year - PublicationDate.Year;
+
+        [Obsolete]
+        protected Book() {}
+
         public Book(List<Author> authors, string bookName, DateTime publicationDate, string description)
         {
             ValidateInput(authors, bookName, publicationDate, description);

@@ -15,8 +15,8 @@ namespace Infrastructure
         {
             _kernel.Bind<IPublisher<Book>>().To<Publisher<Book>>();
             _kernel.Bind<IPublisher<Author>>().To<Publisher<Author>>();
-            _kernel.Bind<IRepository<Book>>().To<BookRepository>();
-            _kernel.Bind<IRepository<Author>>().To<AuthorRepository>();
+            _kernel.Bind<IBookRepository<Book>>().To<BookRepository>();
+            //_kernel.Bind<IRepository<Author>>().To<AuthorRepository>();
         }
 
 

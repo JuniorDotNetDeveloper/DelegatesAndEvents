@@ -3,7 +3,7 @@ using Model.Models;
 
 namespace Model.Helper
 {
-    internal class Claim : IdentifyClass
+    internal class Claim : Entity
     {
         
         public Book Subject { get; }

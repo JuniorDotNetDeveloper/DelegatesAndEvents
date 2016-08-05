@@ -5,12 +5,12 @@ using Model.Helper;
 
 namespace Model.Models
 {
-    public class User : IdentifyClass
+    public class User : Entity
     {
-        public string Customer => $"{FirstName} {LastName}";
-        public string FirstName { get; }
-        public string LastName { get; }
-        public IList<Book> CurrentBooks { get; } = new List<Book>();
+        public virtual string Customer => $"{FirstName} {LastName}";
+        public virtual string FirstName { get; }
+        public virtual string LastName { get; }
+        public virtual IList<Book> CurrentBooks { get; } = new List<Book>();
 
         public User(string firstName, string lastName)
         {
@@ -23,7 +23,9 @@ namespace Model.Models
             LastName = lastName;
         }
 
-        public void TakeTheBook(Book book)
+        protected User() { }
+
+        public virtual void TakeTheBook(Book book)
         {
             var claim = new Claim(this, book);
         
